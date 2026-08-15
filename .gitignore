@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+backend/data/raw/
+backend/data/processed/
+backend/data/*.db
+backend/artifacts/
+*.log
+.pytest_cache/
+.claude/

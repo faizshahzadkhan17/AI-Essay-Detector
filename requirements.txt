@@ -1,0 +1,11 @@
+torch --index-url https://download.pytorch.org/whl/cu124
+transformers
+datasets
+pandas
+pyarrow
+scikit-learn
+fastapi
+uvicorn[standard]
+huggingface_hub
+joblib
+python-multipart

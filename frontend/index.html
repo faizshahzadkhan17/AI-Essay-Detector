@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Essay Detector</title>
+<link rel="icon" href="data:," />
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div id="splash" class="splash" aria-hidden="true">
+    <div class="splash-icon"></div>
+    <div class="splash-label">AI ESSAY DETECTOR</div>
+    <div class="splash-panel splash-top"></div>
+    <div class="splash-panel splash-bottom"></div>
+  </div>
+
+  <canvas id="bg-canvas"></canvas>
+  <div class="glow glow-a"></div>
+  <div class="glow glow-b"></div>
+
+  <div class="scene" id="scene" aria-hidden="true">
+    <div class="shard-wrap" data-depth="0.02" style="top:8%; left:3%;">
+      <div class="shard" style="width:130px; height:130px; --float-dur:15s; --tumble-dur:42s;"></div>
+    </div>
+    <div class="shard-wrap" data-depth="0.03" style="bottom:10%; right:5%;">
+      <div class="shard" style="width:160px; height:160px; --float-dur:18s; --tumble-dur:50s; animation-delay:-6s, -14s;"></div>
+    </div>
+  </div>
+
+  <nav class="topnav">
+    <a href="#/" class="brand">AI Essay Detector</a>
+    <div id="auth-area" class="auth-area"></div>
+  </nav>
+
+  <main class="page">
+    <div data-view="home">
+      <header class="hero">
+        <div class="eyebrow">Sentence-level · statistical · explainable</div>
+        <h1>AI Essay <span class="grad-text">Detector</span></h1>
+        <p class="subtitle">
+          Paste an admissions essay below. Each sentence gets highlighted by how AI-typical its
+          statistical fingerprint is, with plain-language reasons underneath — not a single score.
+        </p>
+      </header>
+
+      <section class="card input-card tilt">
+        <textarea id="essay-input" placeholder="Paste essay text here…" spellcheck="false"></textarea>
+        <div class="controls">
+          <button id="analyze-btn">
+            <span class="btn-label">Analyze essay</span>
+            <span class="btn-spinner" aria-hidden="true"></span>
+          </button>
+          <span id="status" class="status"></span>
+        </div>
+      </section>
+
+      <section id="doc-summary" class="summary-strip"></section>
+
+      <section class="results" id="results-section" hidden>
+        <div class="card essay-card">
+          <h2><span class="dot dot-essay"></span>Highlighted essay</h2>
+          <div id="highlighted-essay" class="essay-body"></div>
+        </div>
+
+        <div class="flagged-block">
+          <h2><span class="dot dot-flag"></span>Flagged sentences &amp; why</h2>
+          <div id="flagged-list" class="flagged-grid"></div>
+        </div>
+      </section>
+    </div>
+
+    <div data-view="login" hidden>
+      <div class="auth-card card tilt">
+        <h2>Log in</h2>
+        <form id="login-form" novalidate>
+          <input type="text" id="login-username" placeholder="Username" autocomplete="username" required />
+          <input type="password" id="login-password" placeholder="Password" autocomplete="current-password" required />
+          <div class="auth-error" id="login-error"></div>
+          <button type="submit">
+            <span class="btn-label">Log in</span>
+            <span class="btn-spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+        <p class="auth-switch">No account? <a href="#/signup">Sign up</a></p>
+      </div>
+    </div>
+
+    <div data-view="signup" hidden>
+      <div class="auth-card card tilt">
+        <h2>Sign up</h2>
+        <form id="signup-form" novalidate>
+          <input type="text" id="signup-username" placeholder="Username (3-32 characters)" autocomplete="username" required />
+          <input type="password" id="signup-password" placeholder="Password (min 6 characters)" autocomplete="new-password" required />
+          <div class="auth-error" id="signup-error"></div>
+          <button type="submit">
+            <span class="btn-label">Create account</span>
+            <span class="btn-spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+        <p class="auth-switch">Already have an account? <a href="#/login">Log in</a></p>
+      </div>
+    </div>
+
+    <div data-view="history" hidden>
+      <header class="hero hero-compact">
+        <h1>Your <span class="grad-text">history</span></h1>
+        <p class="subtitle">Every essay you've analyzed while logged in. Click one to see the full breakdown again.</p>
+      </header>
+      <div id="history-list" class="history-list"></div>
+    </div>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
